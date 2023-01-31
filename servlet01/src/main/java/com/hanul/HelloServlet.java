@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.Calculator;
+
 // 클래스 import 선언문 : ctrl + shift + o
 // 코드라인 복사,붙여넣기 : ctrl + alt + 방향키
 // 코드라인 이동 : alt + 방향키
@@ -26,24 +28,24 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public HelloServlet() {
-        // TODO Auto-generated constructor stub
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		Calculator c = new Calculator();
+		int result = c.calculate(10, 20, "+");
+		response.setContentType("text/html; charset=utf-8");
 		PrintWriter writer = response.getWriter();
 		writer.print("<html>");
 		writer.print("<body>");
 		writer.print("<h3> Hello Servlet </h3>");
 		writer.print("<div>여기는 hello</div>");
+		writer.print("연산결과 : " +  result);
 		writer.print("</body>");
 		writer.print("</html>");
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
