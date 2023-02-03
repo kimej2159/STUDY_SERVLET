@@ -6,12 +6,22 @@ import java.sql.Date;
 public class EmployeeDTO {
 	private int employee_id, salary, manage_id, department_id; //사번, 급여, 관리자사번, 부서코드
 	//성명, 이메일, 전화번호, 업무코드
-	private String first_name, last_name, name, email, phone_number, job_id; 
+	private String first_name, last_name, name, email, phone_number,
+					job_id, department_name;
+	
+	
 	private Date hire_date; //입사일자
 	private double commission_pct;
-	
-	
 	//getter/setter 선언
+	
+	
+	public String getDepartment_name() {
+		return department_name;
+	}
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
+	}
+	
 	public String getName() {
 		return name;
 	}

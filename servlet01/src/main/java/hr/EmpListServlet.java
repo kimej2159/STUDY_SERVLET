@@ -25,18 +25,19 @@ public class EmpListServlet extends HttpServlet {
 		out.print("<hr>");
 		out.print("<h3>사원목록</h3>");
 		out.print("<table border='1'>");
-		out.print("<tr><th>사번</th><th>성명</th><th>부서</th><th>급여</th><th>입사일자</th></tr>");
+		out.print("<tr><th>사번</th><th>성명</th><th>부서</th><th>급여</th><th>입사일자</th><th></th>삭제</tr>");
 
 		EmployeeDAO dao = new EmployeeDAO();
 		ArrayList<EmployeeDTO> list = dao.employee_list();
 		for( EmployeeDTO dto : list) {
-			out.printf("<tr><td>%d</td><td><a href='emp_info?id=%d'>%s</a></td><td>%d</td><td>%d</td><td>%s</td></tr>"
+			out.printf("<tr><td>%d</td><td><a href='emp_info?id=%d'>%s</a></td><td>%d</td><td>%d</td><td>%s</td><td><a href='emp_delete?id=%d'>삭제</a></td></tr>"
 					, dto.getEmployee_id()
 					, dto.getEmployee_id()
 					, dto.getName()
 					, dto.getDepartment_id()
 					, dto.getSalary()
-					, dto.getHire_date());
+					, dto.getHire_date()
+					, dto.getEmployee_id());
 		}
 		
 		
