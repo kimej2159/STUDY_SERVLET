@@ -73,7 +73,7 @@ public class EmployeeDAO {
 			EmployeeDTO dto = new EmployeeDTO();
 			dto.setEmployee_id(id);
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, dto.getEmployee_id());
+			ps.setInt(1, id);
 
 			
 			ps.executeUpdate();
