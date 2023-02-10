@@ -11,7 +11,7 @@
 <hr>
 <h3>회원가입</h3>
 <form method='post' action='info.jsp'>
-<table border='1'>
+<table  border='1'>
 <tr><th>이름</th>
 	<td><input type='text' name='name'></td>
 </tr>
@@ -23,9 +23,8 @@
 <tr><th>스포츠</th>
 	<td><input type='checkbox' name='sports' value='야구'>야구
 		<input type='checkbox' name='sports' value='축구'>축구
-		<input type='checkbox' name='sports' value='배구'>배구
-		<input type='checkbox' name='sports' value='농구'>농구
 		<input type='checkbox' name='sports' value='탁구'>탁구
+		<input type='checkbox' name='sports' value='농구'>농구
 	</td>
 </tr>
 </table>

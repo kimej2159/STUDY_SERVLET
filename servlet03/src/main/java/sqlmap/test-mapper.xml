@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+<!-- select, insert, update, delete -->
+<select id='count' resultType="integer">
+	select count(*) from employees
+</select>
+
+
+<select id='now' resultType="string">
+	select to_char(sysdate, 'hh:mi:ss') from dual
+</select>
+
+<select id='today' resultType='java.sql.Date'>
+	select sysdate from dual
+</select>
+</mapper>
+
+
+
+
+
