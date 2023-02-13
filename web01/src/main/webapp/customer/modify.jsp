@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value='/'/>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -44,7 +43,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -100,13 +99,14 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
@@ -115,7 +115,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item active" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
@@ -140,13 +140,6 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
 
         </ul>
@@ -365,27 +358,33 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <h1 class="h3 mb-0 text-gray-800">고객목록</h1>
-                    <a class='btn btn-primary' href='new.cu'>신규고객등록</a>
-                    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                    <thead>
-                    	<tr><th style='width: 40%'>고객명</th>
-                    		<th>이메일</th>
-                    	</tr>
-                    </thead>
-                    <tbody>
-                    	<c:forEach items="${list}" var="dto">
-                    	<tr><td><a href='info.cu?id=${dto.id}'>${dto.name}</a></td>
-                    		<td>${dto.email}</td>
-                    	</tr>
-                    	</c:forEach>
-                    	
-                    </tbody>
-                    
-                    </table>
-                    
-                    
-                    
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">고객정보 수정</h1>
+					<form method='post' action='update.cu'>
+					<input type='hidden' name='id' value='${dto.id}'>
+					<table class="table table-bordered dataTable" >
+					<tr><th style='width:140px'>고객명</th>
+						<td><input type='text' name='name' value='${dto.name}'></td>
+					</tr>
+					<tr><th>성별</th>
+						<td>
+							<input type='radio' id='male' name='gender' value='남' ${dto.gender eq '남' ? 'checked' :''}>
+							<label for='male'>남</label>
+							<label><input type='radio' name='gender' value='여' ${dto.gender eq '여' ? 'checked' :''}>여</label>
+						</td>
+					</tr>
+					<tr><th>이메일</th>
+						<td><input type='text' name='email' value='${dto.email}' ></td>
+					</tr>
+					<tr><th>전화번호</th>
+						<td><input type='text' name='phone' value='${   dto.phone   }'></td>
+					</tr>					
+					</table>
+					</form>
+<!-- 					<a class='btn btn-primary' href='javascript:$("form").submit()'>저장</a> -->
+					<a class='btn btn-primary' onclick='$("form").submit()'>저장</a>
+					<a class='btn btn-secondary' href='info.cu?id=${dto.id}'>취소</a>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -396,7 +395,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -442,13 +441,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

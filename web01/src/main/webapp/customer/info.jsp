@@ -62,13 +62,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>고객관리</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="list.cu">고객목록</a>
                     </div>
                 </div>
             </li>
@@ -362,6 +360,24 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">고객정보</h1>
+
+					<table class="table table-bordered dataTable" >
+					<tr><th style='width:140px'>고객명</th>
+						<td>${dto.name}</td>
+					</tr>
+					<tr><th>성별</th>
+						<td>${dto.gender}</td>
+					</tr>
+					<tr><th>이메일</th>
+						<td>${dto.email}</td>
+					</tr>
+					<tr><th>전화번호</th>
+						<td>${   dto.phone   }</td>
+					</tr>					
+					</table>
+					<a class='btn btn-primary' href='modify.cu?id=${dto.id}'>고객정보수정</a>
+					<a class='btn btn-primary' 
+					onclick="if(confirm('[${dto.name}]님의 정보를 삭제하시겠습니까?')) href='delete.cu>${dto.id}'">고객정보삭제</a>
 
                 </div>
                 <!-- /.container-fluid -->
